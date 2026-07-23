@@ -1,0 +1,279 @@
+*,
+*::before,
+*::after {
+      box-sizing: border-box;
+}
+
+body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--background);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: var(--space-4);
+      box-sizing: border-box;
+
+      transition: 
+            background-color var(--transition-slow);
+}
+
+.page {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+}
+
+.app {
+      width: min(100%, 720px);
+      /*Takes up all space up to a max of 720px */
+
+      background-color: var(--surface);
+
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+
+      padding: var(--space-5);
+
+      transition: 
+            background-color var(--transition-normal),
+            box-shadow var(--transition-normal),
+            transform var(--transition-normal);
+
+      /*gave margin to all */
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+}
+
+.hero{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-2); /*space between the loga and the tag line*/
+
+      margin-bottom: var(--space-6);
+}
+
+.logo{
+      margin: 0;
+      font-size: var(--font-display);
+      color: var(--text-primary);
+      
+      font-weight: 700;
+      letter-spacing: -1px;
+
+}
+
+.tagline{
+      margin: 0;
+      font-size: var(--font-body);
+      color: var(--text-secondary);
+      font-weight: 400;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+
+    width: 100%;
+
+    padding: var(--space-3);
+
+    background: var(--background);
+
+    border: 1px solid #E5E5EA;
+    border-radius: var(--radius);
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.search-box:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+}
+
+.search-icon {
+    font-size: 18px;
+}
+
+.search-input {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: var(--font-body);
+    color: var(--text-primary);
+
+    font-family: inherit;
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+
+
+
+.weather-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding: var(--space-6);
+
+    border-radius: var(--radius);
+
+    background: var(--background);
+}
+
+.greeting,
+.condition,
+.feels-like,
+.updated-time {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.temperature {
+    margin: var(--space-2) 0;
+
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.city {
+    margin: var(--space-2) 0;
+    font-size: var(--font-heading);
+}
+
+
+.highlights {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: var(--space-3);
+}
+
+.highlight-card {
+    padding: var(--space-4);
+
+    background: var(--background);
+
+    border-radius: var(--radius);
+
+    text-align: center;
+}
+
+.highlight-card h4 {
+    margin: 0;
+
+    font-size: var(--font-caption);
+
+    color: var(--text-secondary);
+
+    font-weight: 500;
+}
+
+.highlight-card p {
+    margin-top: var(--space-3);
+
+    font-size: var(--font-title);
+
+    font-weight: 700;
+}
+
+
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-3);
+}
+
+.section-title {
+    margin: 0;
+
+    font-size: var(--font-title);
+}
+
+#forecast-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-3);
+}
+
+.forecast-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: var(--space-3);
+
+    background: var(--background);
+
+    border-radius: var(--radius);
+}
+
+
+
+.chart-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-3);
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+
+    background: var(--background);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+}
+
+#temperature-chart {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .app {
+        padding: var(--space-4);
+    }
+
+    .logo {
+        font-size: 48px;
+    }
+
+    .temperature {
+        font-size: 56px;
+    }
+
+    .city {
+        font-size: var(--font-title);
+    }
+
+    .highlights {
+        grid-template-columns: 1fr;
+    }
+}

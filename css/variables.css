@@ -1,0 +1,57 @@
+:root {
+
+    /* Background */
+
+    --background: #F5F5F7;
+    --surface: #FFFFFF;
+
+    /* Typography Colors */
+
+    --text-primary: #1D1D1F;
+    --text-secondary: #6E6E73;
+
+    /* Accent */
+
+    --accent: #0071E3;
+
+    /* States */
+
+    --success: #34C759;
+    --warning: #FF9F0A;
+    --error: #FF3B30;
+
+    /* Spacing */
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
+    --space-6: 48px;
+    --space-7: 64px;
+
+    /* Typography */
+
+    --font-display: 64px;
+    --font-heading: 36px;
+    --font-title: 24px;
+    --font-body: 16px;
+    --font-caption: 14px;
+
+    /* Radius */
+
+    --radius: 16px;
+
+    /* Shadow */
+
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+    /* Animation */
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+
+    
+}
