@@ -1,127 +1,27 @@
-────────────────────────────
+# Nimbus
 
-        Nimbus
+Nimbus is a responsive weather dashboard. Search for a city to see current conditions, weather highlights, a three-day forecast, and an hourly temperature chart. The page theme changes with the weather.
 
-Beautiful weather,
-beautifully presented.
+## Run locally
 
-────────────────────────────
+1. Create a free API key at [WeatherAPI](https://www.weatherapi.com/).
+2. Copy `js/configexample.js` to `js/config.js` and add your key in `js/config.js`.
+3. Serve the project folder with any static web server. For example, run `python3 -m http.server 8000` from the project folder and open `http://localhost:8000`.
 
-🔍 Search city...
+The app uses ES modules, so opening `index.html` directly as a `file://` URL may not work. Chart.js is loaded from jsDelivr; the rest of the app is static HTML, CSS, and JavaScript.
 
-────────────────────────────
+## Deploy
 
-          ☀️
+Deploy the project folder to GitHub Pages, Netlify, or another static host after adding your WeatherAPI key. `js/config.js` is intentionally ignored by Git to keep your local key out of the repository. Add a deployment-time config file or use a small serverless proxy for your hosted site. A key embedded in a browser app is visible to visitors, so restrict it to your domain where possible; use a serverless proxy if you need to keep it private.
 
-          31°
+## Project structure
 
-       New Delhi
+- `index.html` — page structure
+- `css/` — styles and design tokens
+- `js/app.js` — search and application flow
+- `js/api.js` — WeatherAPI request and data mapping
+- `js/ui.js` — rendering, chart, and loading/error states
+- `js/theme.js` — weather-based color themes
+- `js/configexample.js` — safe config template; copy it to the ignored `js/config.js` for local use
 
-     Partly Cloudy
-
-────────────────────────────
-
-Feels Like      33°
-
-Humidity        62%
-
-Wind           14 km/h
-
-Visibility      8 km
-
-────────────────────────────
-
-Forecast
-
-Mon  Tue  Wed  Thu  Fri
-
-☀️   🌤️   🌧️   ☁️   ☀️
-
-31°  30°  27°  28°  32°
-
-────────────────────────────
-
-Temperature Trend
-
-      ╭───╮
-   ╭──╯   ╰──╮
-───╯         ╰──
-
-────────────────────────────
-
-
-
-
-
-
-
-
-Open Nimbus
-
-↓
-
-Welcome
-
-↓
-
-Get Started
-
-↓
-
-Location Permission
-
-↓
-
-Current Weather
-
-↓
-
-Search Any City
-
-↓
-
-Weather Updates
-
-↓
-
-Forecast
-
-↓
-
-Charts
-
-↓
-
-Insights
-
-
-🌱 Phase 1 — Foundation
-Design System ✅
-Layout
-Typography
-Responsive structure
-🌤 Phase 2 — Weather Engine
-Location detection
-Weather API
-Search
-Dynamic rendering
-🎨 Phase 3 — Living UI
-Dynamic gradients
-Animated icons
-Smooth transitions
-Glassmorphism cards
-Micro-interactions
-📊 Phase 4 — Insights
-Temperature charts
-Weekly forecast
-Weather insights
-Air quality
-UV index
-Sunrise & sunset
-✨ Phase 5 — Premium Experience
-Ambient Mode
-Dynamic greetings
-Background transitions
-Theme adapting to weather and time
-Beautiful loading states
-Subtle sound effects (optional)
+WeatherAPI provides the current conditions and forecast. Chart.js is distributed by jsDelivr.

@@ -31,116 +31,166 @@
 
             </section>
 
-            <!-- ================= SEARCH ================= -->
+            <!-- =====================Search-section====================== -->
 
             <section class="search-section">
 
-                <form class="search-box" id="search-form">
+                <form id="search-form" class="search-box" autocomplete="off">
 
+                    <!-- Search Icon -->
                     <span class="search-icon">
                         🔍
                     </span>
 
+                    <!-- Search Input -->
                     <input id="search-input" class="search-input" type="search" placeholder="Search any city..."
-                        autocomplete="off" spellcheck="false">
+                        autocomplete="on" spellcheck="false">
+
+                    <!-- Submit Button -->
+                    <button id="search-button" class="search-button" type="submit" aria-label="Search">
+
+                        <span id="search-button-content">
+                            🔎
+                        </span>
+
+                    </button>
 
                 </form>
 
             </section>
 
+            <!-- ==========================Error-section================ -->
+
+            <section id="error-card" class="error-card hidden">
+
+                <div class="error-icon">❌</div>
+
+                <h2 class="error-title">
+                    City not found
+                </h2>
+
+                <p class="error-message">
+                    Please check the spelling and try again.
+                </p>
+
+            </section>
+            <!-- ========================== Empty State ========================= -->
+
+            <section id="empty-state" class="empty-state">
+
+                <div class="empty-icon">
+                    ☁️
+                </div>
+
+                <h2 class="empty-title">
+                    Welcome to Nimbus
+                </h2>
+
+                <p class="empty-description">
+                    Search for any city to view the current weather,
+                    3-day forecast and hourly temperatures.
+                </p>
+
+            </section>
+
+
             <!-- ================= CURRENT WEATHER ================= -->
 
-            <section class="weather-card">
+            <div id="weather-content">
 
-                <p id="greeting" class="greeting">
-                    Good Morning
-                </p>
+                <section class="weather-card">
 
-                <h2 id="temperature" class="temperature">
-                    --°
-                </h2>
+                    <p id="greeting" class="greeting">
+                        Good Morning
+                    </p>
 
-                <p id="feels-like" class="feels-like">
-                    Feels like --°
-                </p>
+                    <h2 id="temperature" class="temperature">
+                        --°
+                    </h2>
 
-                <h3 id="city" class="city">
-                    Search for a city
-                </h3>
+                    <p id="feels-like" class="feels-like">
+                        Feels like --°
+                    </p>
 
-                <p id="condition" class="condition">
-                    --
-                </p>
+                    <h3 id="city" class="city">
+                        Search for a city
+                    </h3>
 
-                <p id="updated-time" class="updated-time">
-                    Updated --
-                </p>
+                    <p id="condition" class="condition">
+                        --
+                    </p>
 
-            </section>
+                    <p id="updated-time" class="updated-time">
+                        Updated --
+                    </p>
 
-            <!-- ================= HIGHLIGHTS ================= -->
+                </section>
 
-            <section class="highlights">
+                <!-- ================= HIGHLIGHTS ================= -->
 
-                <div class="highlight-card">
-                    <h4>Humidity</h4>
-                    <p id="humidity">--%</p>
-                </div>
+                <section class="highlights">
 
-                <div class="highlight-card">
-                    <h4>Wind</h4>
-                    <p id="wind-speed">-- km/h</p>
-                </div>
+                    <div class="highlight-card">
+                        <h4>Humidity</h4>
+                        <p id="humidity">--%</p>
+                    </div>
 
-                <div class="highlight-card">
-                    <h4>Pressure</h4>
-                    <p id="pressure">-- hPa</p>
-                </div>
+                    <div class="highlight-card">
+                        <h4>Wind</h4>
+                        <p id="wind-speed">-- km/h</p>
+                    </div>
 
-                <div class="highlight-card">
-                    <h4>Visibility</h4>
-                    <p id="visibility">-- km</p>
-                </div>
+                    <div class="highlight-card">
+                        <h4>Pressure</h4>
+                        <p id="pressure">-- hPa</p>
+                    </div>
 
-                <div class="highlight-card">
-                    <h4>UV Index</h4>
-                    <p id="uv-index">--</p>
-                </div>
+                    <div class="highlight-card">
+                        <h4>Visibility</h4>
+                        <p id="visibility">-- km</p>
+                    </div>
 
-                <div class="highlight-card">
-                    <h4>Sunrise</h4>
-                    <p id="sunrise">--:--</p>
-                </div>
+                    <div class="highlight-card">
+                        <h4>UV Index</h4>
+                        <p id="uv-index">--</p>
+                    </div>
 
-            </section>
+                    <div class="highlight-card">
+                        <h4>Sunrise</h4>
+                        <p id="sunrise">--:--</p>
+                    </div>
 
-            <!-- ================= FORECAST ================= -->
+                </section>
 
-            <section class="forecast">
+                <!-- ================= FORECAST ================= -->
 
-                <h2 class="section-title">
-                    7-Day Forecast
-                </h2>
+                <section class="forecast">
 
-                <div id="forecast-container">
+                    <h2 class="section-title">
+                        3-Day Forecast
+                    </h2>
 
-                    <!-- Forecast cards will be inserted here -->
+                    <div id="forecast-container">
 
-                </div>
+                        <!-- Forecast cards will be inserted here -->
 
-            </section>
+                    </div>
 
-            <!-- ================= CHART ================= -->
+                </section>
 
-            <section class="chart-section">
+                <!-- ================= CHART ================= -->
 
-                <h2 class="section-title">
-                    Hourly Temperature
-                </h2>
-                <div class="chart-container">
-                    <canvas id="temperature-chart"></canvas>
-                </div>
-            </section>
+                <section class="chart-section">
+
+                    <h2 class="section-title">
+                        Hourly Temperature
+                    </h2>
+                    <div class="chart-container">
+                        <canvas id="temperature-chart"></canvas>
+                    </div>
+                </section>
+
+            </div>
 
         </main>
 
