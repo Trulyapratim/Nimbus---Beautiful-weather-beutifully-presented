@@ -12,7 +12,7 @@ The app uses ES modules, so opening `index.html` directly as a `file://` URL may
 
 ## Deploy
 
-Deploy the project folder to GitHub Pages, Netlify, or another static host after adding your WeatherAPI key. `js/config.js` is intentionally ignored by Git to keep your local key out of the repository. Add a deployment-time config file or use a small serverless proxy for your hosted site. A key embedded in a browser app is visible to visitors, so restrict it to your domain where possible; use a serverless proxy if you need to keep it private.
+For Vercel, add `WEATHER_API_KEY` in **Project Settings → Environment Variables**, then redeploy. The `/api/weather` function reads the key server-side, so it is not included in the browser bundle or GitHub. For local development with a basic static server, copy `js/configexample.js` to `js/config.js` and add your key there; that file is ignored by Git. Other static hosts need an equivalent serverless proxy because browser-only apps cannot keep an API key private.
 
 ## Project structure
 
@@ -23,5 +23,6 @@ Deploy the project folder to GitHub Pages, Netlify, or another static host after
 - `js/ui.js` — rendering, chart, and loading/error states
 - `js/theme.js` — weather-based color themes
 - `js/configexample.js` — safe config template; copy it to the ignored `js/config.js` for local use
+- `api/weather.mjs` — Vercel function that securely requests the weather forecast
 
 WeatherAPI provides the current conditions and forecast. Chart.js is distributed by jsDelivr.

@@ -1,12 +1,44 @@
-import { API_KEY, BASE_URL } from "./config.js";
-
 export async function fetchWeather(city) {
+  const proxyUrl = `/api/weather?city=${encodeURIComponent(city)}`;
+  let response;
+
+  try {
+    response = await fetch(proxyUrl);
+  } catch {
+    throw new Error("Couldn't connect. Check your internet connection and try again.");
+  }
+
+  // A basic local static server has no Vercel function, so use the ignored
+  // local config file as a development fallback.
+  if (response.status === 404) {
+    return fetchWeatherLocally(city);
+  }
+
+  const data = await response.json();
+  if (!response.ok) {
+    if (response.status === 400) throw new Error("We couldn't find that location. Check the spelling and try again.");
+    if (response.status === 401 || response.status === 403) throw new Error("The weather API key is invalid or unavailable. Check your Vercel WEATHER_API_KEY setting.");
+    throw new Error(data.error?.message || "Weather is temporarily unavailable. Please try again.");
+  }
+
+  return normalizeWeather(data);
+}
+
+async function fetchWeatherLocally(city) {
+  let config;
+  try {
+    config = await import("./config.js");
+  } catch {
+    throw new Error("Weather service is not configured. Add WEATHER_API_KEY in Vercel, or create js/config.js from js/configexample.js for local use.");
+  }
+
+  const { API_KEY, BASE_URL } = config;
   if (!API_KEY || API_KEY === "YOUR_WEATHERAPI_KEY") {
     throw new Error("Add your WeatherAPI key in js/config.js to get started.");
   }
 
   const url = new URL(`${BASE_URL}/forecast.json`);
-  url.search = new URLSearchParams({ key: API_KEY, q: city, days: "7", aqi: "yes" });
+  url.search = new URLSearchParams({ key: API_KEY, q: city, days: "3", aqi: "yes" });
   let response;
   try {
     response = await fetch(url);
@@ -17,10 +49,13 @@ export async function fetchWeather(city) {
   const data = await response.json();
   if (!response.ok) {
     if (response.status === 400) throw new Error("We couldn't find that location. Check the spelling and try again.");
-    if (response.status === 401 || response.status === 403) throw new Error("The weather API key is invalid or unavailable. Check js/config.js.");
+    if (response.status === 401 || response.status === 403) throw new Error("The local WeatherAPI key is invalid or unavailable. Check js/config.js.");
     throw new Error(data.error?.message || "Weather is temporarily unavailable. Please try again.");
   }
+  return normalizeWeather(data);
+}
 
+function normalizeWeather(data) {
   return {
     city: data.location.name,
     country: data.location.country,
